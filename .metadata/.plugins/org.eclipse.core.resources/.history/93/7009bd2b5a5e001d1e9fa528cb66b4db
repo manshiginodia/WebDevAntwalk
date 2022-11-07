@@ -1,0 +1,15 @@
+<link rel="stylesheet" type="text/css" href="css/menu.css">
+
+<div class ="navbar">
+<ul class="list">
+<li><a href ="home.html" target="frmMain">Home</a> </li>
+<li><a href ="service.html" target="frmMain">Service</a></li>
+<li><a href ="service.html" target="frmMain">Service</a></li>
+<li><a href ="about.html" target="frmMain">About Us</a></li>
+<li><a href ="login.html" target="frmMain">Login</a></li>
+<li><a href ="register.html" target="frmMain">Register</a></li>
+<li><a href ="contact.html" target ="_new">Contact Us</a></li>
+</ul>
+</div>
+
+

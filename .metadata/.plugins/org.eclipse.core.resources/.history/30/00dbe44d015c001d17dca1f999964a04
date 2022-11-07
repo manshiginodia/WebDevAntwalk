@@ -1,0 +1,19 @@
+html{
+	height:100%;
+}
+
+body{
+	background-repeat: no-repeat;
+	background:#E8F5E9;
+	background-size:cover; 
+}
+
+.navbar{
+	width:200px;
+	position: relative;
+	padding:0px;
+	margin:20px
+}
+.list{
+	list-style-type: none;
+}

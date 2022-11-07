@@ -1,0 +1,96 @@
+package businesslogic;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+public class LoginServlet extends HttpServlet {
+	
+	Connection con;
+	Statement stmt;
+	PreparedStatement pstmt;
+	ResultSet rs;
+	
+
+	private static final long serialVersionUID = 1L;
+     public LoginServlet() {
+        super();
+            }
+
+	public void init(ServletConfig config) throws ServletException {
+	
+	}
+
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+		//MIME : Multipurpose Internet main extension, it is a type of data to be exchanged between browser and server
+		response.setContentType("text/html");
+		
+		// creation of PrintWriter obj which is used to display output on the browser
+		PrintWriter out = response.getWriter();
+		
+		//collecting from data submitted via login.html from client to server
+		String uname= request.getParameter("txtuname");
+		String upwd = request.getParameter("txtpwd");
+		
+		//login validation login follow at server
+		System.out.println(uname+" "+upwd);
+		
+		
+		try {
+
+            Class.forName("oracle.jdbc.OracleDriver");
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+        try {
+
+            con = DriverManager.getConnection("jdbc:oracle:thin:@IPhost:port:xe","system","oracle");
+            
+            String searchquery = "SELECT cname, cusername,cuserpass from tblbankuser WHERE cusername =? AND cuserpass =?";
+            pstmt = con.prepareStatement(searchquery,ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
+            
+            pstmt.setString(1,uname);
+            pstmt.setString(2, upwd);
+            
+            rs= pstmt.executeQuery();
+            
+            if(rs.next()) {
+            	RequestDispatcher redirect = request.getRequestDispatcher("service.html");
+    			redirect.forward(request, response);
+            
+            }else {
+    			out.println("<center><font color=red size=4>Username and/or Password Incorrect</font></center>");
+    			RequestDispatcher redirect = request.getRequestDispatcher("login.html");
+    			redirect.include(request, response);
+    	
+    		}
+		
+        }catch (SQLException e) {
+            e.printStackTrace();
+        	
+        }
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		service(request,response);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		service(request,response);
+	}
+
+}

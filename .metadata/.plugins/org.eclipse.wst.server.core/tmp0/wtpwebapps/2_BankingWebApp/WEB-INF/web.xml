@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" version="4.0">
+  <display-name>2_BankingWebApp</display-name>
+  <servlet>
+  	<servlet-name>regserv</servlet-name>
+  	<servlet-class>businesslogic.RegisterServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	 <servlet-name>regserv</servlet-name>
+  	 <url-pattern>/regprocess</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+   <servlet>
+  	<servlet-name>logserv</servlet-name>
+  	<servlet-class>businesslogic.LoginServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	 <servlet-name>logserv</servlet-name>
+  	 <url-pattern>/loginprocess</url-pattern>
+  </servlet-mapping>
+  
+  
+</web-app>

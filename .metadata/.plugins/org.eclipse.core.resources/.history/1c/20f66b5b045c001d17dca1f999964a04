@@ -1,0 +1,36 @@
+html{
+	height:100%;
+}
+
+body{
+	background-repeat: no-repeat;
+	background:#E8F5E9;
+	background-size:cover; 
+}
+
+.navbar{
+	width:200px;
+	position: relative;
+	padding:0px;
+	margin: 5px
+}
+.navbar li{
+	list-style-type: none;
+	height:60px;
+	background: #81C784;
+	position: relative;
+	z-index: 1;	
+}
+.navbar a{
+	text-decoration:none;
+	font-weidth:bold;
+	font-family:arial;
+	line-height:60px;
+	
+	display:block;
+	transition :margin-left 0.4s;
+	
+	height:100%;
+	color:#fff;
+	mrgin-left:200;
+}
