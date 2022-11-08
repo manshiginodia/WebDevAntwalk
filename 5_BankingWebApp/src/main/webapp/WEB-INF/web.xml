@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>5_BankingWebApp</display-name>
+  
+  
+  <context-param>
+  	<param-name>dbdriver</param-name>
+  	<param-value>oracle.jdbc.OracleDriver</param-value>
+  </context-param>
+  
+   <context-param>
+  	<param-name>dbloc</param-name>
+  	<param-value>jdbc:oracle:thin:@IPhost:port:xe</param-value>
+  </context-param>
+  
+   <context-param>
+  	<param-name>dbuser</param-name>
+  	<param-value>system</param-value>
+  </context-param>
+  
+  <context-param>
+  	<param-name>dbpwd</param-name>
+  	<param-value>oracle</param-value>
+  </context-param>
+  
+  <context-param>
+  	<param-name>blockeduser</param-name>
+  	<param-value>sandeep</param-value>
+  </context-param>
+  
+  <servlet>
+  	<servlet-name>regserv</servlet-name>
+  	<servlet-class>businesslogic.RegisterServlet</servlet-class>
+  	<init-param>
+  		<param-name> reginitparam</param-name>
+  		<param-value>english</param-value>
+  	</init-param>
+  </servlet>
+  
+  <servlet-mapping>
+  	 <servlet-name>regserv</servlet-name>
+  	 <url-pattern>/regprocess</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+   <servlet>
+  	<servlet-name>logserv</servlet-name>
+  	<servlet-class>businesslogic.LoginServlet</servlet-class>
+  	<init-param>
+  		<param-name> loginitparam</param-name>
+  		<param-value>India</param-value>
+  	</init-param>
+  </servlet>
+  
+  <servlet-mapping>
+  	 <servlet-name>logserv</servlet-name>
+  	 <url-pattern>/loginprocess</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+  	<servlet-name>pserv</servlet-name>
+  	<servlet-class>businesslogic.ProfileServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	 <servlet-name>pserv</servlet-name>
+  	 <url-pattern>/profileserv</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+  	<servlet-name>logoutserv</servlet-name>
+  	<servlet-class>businesslogic.LogoutServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	 <servlet-name>logoutserv</servlet-name>
+  	 <url-pattern>/logout</url-pattern>
+  </servlet-mapping>
+  
+  
+  <filter>
+  	<filter-name>fone</filter-name>
+  	<filter-class>interceptor.LoginFilter</filter-class>
+  </filter>
+  
+  <filter-mapping>
+  <filter-name>fone</filter-name>
+  	<url-pattern>/loginprocess</url-pattern>	
+  </filter-mapping>
+  
+  <listener>
+  	<listener-class>listener.SessionListener</listener-class>
+  </listener>
+  
+  <listener>
+  	<listener-class>listener.RequestResponseLisnr</listener-class>
+  </listener>
+  
+  
+   <servlet>
+  	<servlet-name>fserv</servlet-name>
+  	<servlet-class>businesslogic.FeedbackServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	 <servlet-name>fserv</servlet-name>
+  	 <url-pattern>/feedserv</url-pattern>
+  </servlet-mapping>
+  
+</web-app>

@@ -1,0 +1,22 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Service</title>
+</head>
+<body>
+<center>
+<!-- Scriptlet -->
+<%
+	out.println("Welcome to NRI Banking Services");
+%>
+<br>
+
+<a style="text-decoration:none;"  href="display.jsp" >Display all services</a><br>
+<a href="apply.jsp">Click here to Apply</a><br>
+</center>
+
+</body>
+</html>
